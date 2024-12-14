@@ -1,21 +1,22 @@
 package appLibraryTracker.Model;
 
-import jakarta.validation.constraints.Email;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "book")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(nullable = false)
     private String title;
@@ -28,5 +29,5 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
-    private Person Owner;
+    private Person owner;
 }
